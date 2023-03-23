@@ -1,3 +1,60 @@
 body{
     text-align: center;
 }
+.formExam{
+    width: 332px;
+    margin: auto;
+    color: black;
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 10px;
+    box-shadow: 2px 2px 2px lightgrey;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.formExam h1{
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.listaInserimenti{
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 332px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: white;
+    border-radius: 12px;
+    padding-top: 2px;
+    padding-bottom: 1px;
+    box-shadow: 2px 2px 2px lightgrey;
+}
+.listaInserimenti h1{
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.icons{
+    margin-bottom: -1.5px;
+}
+.statsExam{
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 332px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: white;
+    border-radius: 12px;
+    padding-top: 2px;
+    padding-bottom: 1px;
+    box-shadow: 2px 2px 2px lightgrey;
+}
+.statsExam h1{
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.2rem;
+}

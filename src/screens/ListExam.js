@@ -1,7 +1,11 @@
 import React from "react";
 import { useState, useEffect } from 'react';
+import '../assets/css/Home.css';
 import Button from '../funcComponents/ui/Button';
 import { Link } from 'react-router-dom'
+import CardList from "../funcComponents/ui/CardList";
+import CardStats from "../funcComponents/ui/CardStats";
+import {AiOutlineBarChart} from 'react-icons/ai';
 
 function ListExam() {
     let tempCount = 0
@@ -19,24 +23,24 @@ function ListExam() {
     function computeStats() {
         let tempExam = state.exam
         let count = 0
-        let num=0
-        let tempExamsNotPassed=0
-        let tempExamsPassedWithMerit=0
+        let num = 0
+        let tempExamsNotPassed = 0
+        let tempExamsPassedWithMerit = 0
         state.exam.map(
             (singleExam, i) => {
-                let tempNum=parseInt(singleExam.grade)
-                num+=tempNum
+                let tempNum = parseInt(singleExam.grade)
+                num += tempNum
                 count++
-                if(singleExam.finalResult=='bocciato'){
+                if (singleExam.finalResult == 'bocciato') {
                     tempExamsNotPassed++
                 }
-                if(singleExam.grade==30 || singleExam.grade==31){
+                if (singleExam.grade == 30 || singleExam.grade == 31) {
                     tempExamsPassedWithMerit++
                 }
             }
         )
-        console.log('count--> ',count)
-        let avg=num/count
+        console.log('count--> ', count)
+        let avg = num / count
         let tempStats = [{
             examCount: count,
             examAverage: avg,
@@ -51,67 +55,32 @@ function ListExam() {
     }
     return (
         <div id="ready" className="ListExam">
-            <Link to={'/'}>Indietro</Link>
             <h1>Lista esami</h1>
-            <p>
-                STAMPA ESAMI:
-                {
-                    state.exam.map(
-                        (singleExam, i) => {
-                            return (
-                                <div key={i}>
-                                    <p>
-                                        {
-                                            singleExam.name
-                                        }
-                                        -
-                                        {
-                                            singleExam.grade
-                                        }
-                                        -
-                                        {
-                                            singleExam.date
-                                        }
-                                        -
-                                        {
-                                            singleExam.finalResult
-                                        }
-                                    </p>
-                                </div>
-                            )
-                        }
-                    )
-                }
-            </p>
-            <h1>Stats</h1>
-            <p>
-                <Button
-                    label={'inserisci'}
-                    callbackButton={computeStats}
-                />
-            </p>
-            {
-                state.stats.map(
-                    (singleStat, i) => {
-                        return (
-                            <div key={i}>
-                                <p>
-                                    Esami sostenuti: {singleStat.examCount}
-                                </p>
-                                <p>
-                                    Media esami: {singleStat.examAverage}
-                                </p>
-                                <p>
-                                    Non passati: {singleStat.examsNotPassed}
-                                </p>
-                                <p>
-                                    Passati di cristo: {singleStat.examsPassedWithMerit}
-                                </p>
-                            </div>
-                        )
-                    }
-                )
-            }
+            <Link to={'/'}>Indietro</Link>
+            <div className='listaInserimenti'>
+                <h1>Lista esami</h1>
+                <p>
+                    <CardList
+                        inputObject={state.exam}
+                    />
+                </p>
+            </div>
+            <div className="statsExam">
+                <h1>Stats</h1>
+                <p>
+                    <Button
+                        label={'Visualizza'}
+                        icon={<AiOutlineBarChart className="icons"/>}
+                        callbackButton={computeStats}
+                        className={'blueButton'}
+                    />
+                </p>
+                <p>
+                    <CardStats
+                        inputObject={state.stats}
+                    />
+                </p>
+            </div>
         </div >
     );
 }

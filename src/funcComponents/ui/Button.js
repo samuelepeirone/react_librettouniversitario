@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import '../../assets/css/Button.css'
 
 function Button(props){
     function clickButton(event){
@@ -7,8 +8,8 @@ function Button(props){
     }
 
     return(
-        <button onClick={clickButton}>
-            {props.label}
+        <button onClick={clickButton} id={props.id} className={props.className}>
+            {props.label} {props.icon}
         </button>
     )
 }

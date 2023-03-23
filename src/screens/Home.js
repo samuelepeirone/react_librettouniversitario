@@ -3,126 +3,164 @@ import '../assets/css/Home.css';
 import Button from '../funcComponents/ui/Button';
 import InputBox from '../funcComponents/ui/InputBox';
 import { Link } from 'react-router-dom'
+import CardList from '../funcComponents/ui/CardList'
+import { AiOutlineFileAdd, AiOutlineDelete } from 'react-icons/ai';
 
 function Home() {
-  let tempNameExam = ''
-  let tempGradeExam = ''
-  let tempDateExam = ''
   const [state, setState] = useState(
     {
-      exam: localStorage.getItem("librettoEsami")===null?[]:JSON.parse(localStorage.getItem("librettoEsami"))
+      exam: localStorage.getItem("librettoEsami") === null ? [] : JSON.parse(localStorage.getItem("librettoEsami")),
+      messageName: '',
+      messageGrade: '',
+      messageDate: ''
     }
   )
   useEffect(
     () => {
       console.log('componente pronto -> didMount')
-    }, [state]
+      controlForm()
+    }, [state.messageName, state.messageGrade, state.messageDate]
   )
   function getNomeEsame(nomeEsame) {
-    tempNameExam=nomeEsame
+    setState({
+      ...state,
+      messageName: nomeEsame
+    })
   }
   function getVotoEsame(votoEsame) {
-    tempGradeExam=votoEsame
+    setState({
+      ...state,
+      messageGrade: votoEsame
+    })
   }
   function getDataExam(dataEsame) {
-    tempDateExam=dataEsame
+    setState({
+      ...state,
+      messageDate: dataEsame
+    })
   }
-  function computeFinalResult(grade){
-    var x=grade
-    switch (true){
-      case (x==31):
+  function computeFinalResult(grade) {
+    var x = grade
+    switch (true) {
+      case (x == 31):
         return '30 e lode'
-      case (x >= 18 && x<=30):
+      case (x >= 18 && x <= 30):
         return 'promosso'
-      case (x<18):
+      case (x < 18):
         return 'bocciato'
       default:
-        alert('diavolo matto')
+        alert('ooops!')
         break;
     }
   }
+  function computeGradeResult(grade){
+    var x = grade
+    switch (true) {
+      case (x == 31):
+        return '30 e lode'
+      default:
+        return x
+    }
+  }
   function saveExam() {
-    let tempFinalResult=computeFinalResult(tempGradeExam)
+    let tempFinalResult = computeFinalResult(state.messageGrade)
     console.log('SALVA!')
     let tempExam = state.exam
     tempExam.push(
       {
-        name: tempNameExam,
-        grade: tempGradeExam,
-        date: tempDateExam,
+        name: state.messageName,
+        grade: state.messageGrade,
+        gradeResult: computeGradeResult(state.messageGrade),
+        date: state.messageDate,
         finalResult: tempFinalResult
       }
     )
     setState(
       {
         ...state,
-        exam: tempExam
+        exam: tempExam,
+        messageName: '',
+        messageGrade: '',
+        messageDate: ''
       }
     )
     localStorage.setItem("librettoEsami", JSON.stringify(tempExam));
   }
+  function deleteAllExams() {
+    setState(
+      {
+        ...state,
+        exam: []
+      }
+    )
+    localStorage.removeItem("librettoEsami")
+  }
+  function controlForm() {
+    if (state.messageName && state.messageGrade && state.messageDate) {
+      document.getElementById('addExamButton').disabled = false
+    }
+    else {
+      document.getElementById('addExamButton').disabled = true
+    }
+  }
+
   return (
     <div className="Home" id='ready'>
       <h1>Libretto universitario</h1>
       <Link to={'ListaEsami'}>Vai alla lista esami</Link>
-      <p>
-        <InputBox
-          inputType={'text'}
-          inputPlaceholder={'inserisci nome esame'}
-          callbackInput={getNomeEsame}
-        />
-      </p>
-      <p>
-        <InputBox
-          inputType={'number'}
-          inputPlaceholder={'inserisci voto esame'}
-          callbackInput={getVotoEsame}
-          inputMin={0}
-          inputMax={31}
-        />
-      </p>
-      <p>
-        <InputBox
-          inputType={'date'}
-          callbackInput={getDataExam}
-        />
-      </p>
-      <p>
-        <Button
-          label={'inserisci'}
-          callbackButton={saveExam}
-        />
-      </p>
-      <p>
-        STAMPA ESAMI:
-        {
-          state.exam.map(
-            (singleExam, i) => {
-              return (
-                <div key={i}>
-                  <p>
-                    {
-                      singleExam.name
-                    }
-                    -
-                    {
-                      singleExam.grade
-                    }
-                    -
-                    {
-                      singleExam.date
-                    }
-                    -
-                    {
-                      singleExam.finalResult
-                    }
-                  </p>
-                </div>
-              )
-            }
-          )
-        }
-      </p>
+      <div className='formExam'>
+        <h1>Inserimento</h1>
+        <p>
+          <InputBox
+            inputType={'text'}
+            inputPlaceholder={'Nome esame'}
+            callbackInput={getNomeEsame}
+            value={state.messageName}
+          />
+        </p>
+        <p>
+          <InputBox
+            inputType={'number'}
+            inputPlaceholder={'Voto esame'}
+            callbackInput={getVotoEsame}
+            inputMin={0}
+            inputMax={31}
+            value={state.messageGrade}
+          />
+        </p>
+        <p>
+          <InputBox
+            inputType={'date'}
+            callbackInput={getDataExam}
+            value={state.messageDate}
+          />
+        </p>
+        <p>
+          <Button
+            label={'Inserisci'}
+            icon={<AiOutlineFileAdd className='icons'/>}
+            callbackButton={saveExam}
+            id={'addExamButton'}
+            className={'blueButton'}
+          />
+        </p>
+      </div>
+      <div className='listaInserimenti'>
+        <h1>Lista inserimenti</h1>
+        <p>
+          <CardList
+            inputObject={state.exam}
+          />
+        </p>
+        <p>
+          <Button
+            label={'Elimina lista'}
+            icon={<AiOutlineDelete className='icons'/>}
+            callbackButton={deleteAllExams}
+            className={'redButton'}
+          />
+        </p>
+      </div>
     </div>
   );
 }
