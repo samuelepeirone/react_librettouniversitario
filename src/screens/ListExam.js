@@ -5,7 +5,8 @@ import Button from '../funcComponents/ui/Button';
 import { Link } from 'react-router-dom'
 import CardList from "../funcComponents/ui/CardList";
 import CardStats from "../funcComponents/ui/CardStats";
-import {AiOutlineBarChart} from 'react-icons/ai';
+import { AiOutlineBarChart } from 'react-icons/ai';
+import { MdVerticalSplit, MdCreate } from 'react-icons/md';
 
 function ListExam() {
     let tempCount = 0
@@ -55,32 +56,36 @@ function ListExam() {
     }
     return (
         <div id="ready" className="ListExam">
-            <h1>Lista esami</h1>
-            <Link to={'/'}>Indietro</Link>
-            <div className='listaInserimenti'>
-                <h1>Lista esami</h1>
-                <p>
-                    <CardList
-                        inputObject={state.exam}
-                    />
-                </p>
-            </div>
-            <div className="statsExam">
-                <h1>Stats</h1>
-                <p>
-                    <Button
-                        label={'Visualizza'}
-                        icon={<AiOutlineBarChart className="icons"/>}
-                        callbackButton={computeStats}
-                        className={'blueButton'}
-                    />
-                </p>
-                <p>
-                    <CardStats
-                        inputObject={state.stats}
-                    />
-                </p>
-            </div>
+            <nav>
+                <Link to={'/'} className='linkNavbar linkPage'>Libretto <MdCreate className="icons" /></Link>
+                <span className="linkNavbar thisPage">Lista esami <MdVerticalSplit className="icons"/></span>
+            </nav>
+            <section>
+                <div className='listaInserimenti'>
+                    <h1>Lista esami</h1>
+                    <p>
+                        <CardList
+                            inputObject={state.exam}
+                        />
+                    </p>
+                </div>
+                <div className="statsExam">
+                    <h1>Stats</h1>
+                    <p>
+                        <Button
+                            label={'Visualizza'}
+                            icon={<AiOutlineBarChart className="icons" />}
+                            callbackButton={computeStats}
+                            className={'blueButton'}
+                        />
+                    </p>
+                    <p>
+                        <CardStats
+                            inputObject={state.stats}
+                        />
+                    </p>
+                </div>
+            </section>
         </div >
     );
 }

@@ -1,16 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
-.blueButton{
+button{
     width: 100%;
-    max-width: 350px;
+    max-width: 430px;
     padding-top: 8px;
     padding-bottom: 8px;
     border-radius: 7px;
+    font-size: 0.95rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: 250ms;
+}
+button:disabled{
+    cursor: not-allowed;
+}
+.blueButton{
     background-color: #0083fa;
     border: 1.5px solid #0083fa;
     color: rgb(233, 247, 254);
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-family: 'DM Sans', sans-serif;
 }
 .blueButton:hover{
     background-color: #006bce;
@@ -21,20 +27,11 @@
     background-color: #89bae8;
     border: 1.5px solid #89bae8;
     color: rgb(211, 240, 255);
-    cursor: not-allowed;
 }
 .redButton{
-    width: 332px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border-radius: 7px;
     background-color: #DF2E38;
     border: 1.5px solid #DF2E38;
     color: #fdf5f5;
-    cursor: pointer;
-    transform: 200ms;
-    font-size: 0.95rem;
-    font-family: 'DM Sans', sans-serif;
 }
 .redButton:hover{
     background-color: #cd2028;

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 input{
-    width: 90%;
+    width: 92%;
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 15px;
@@ -12,4 +12,14 @@ input{
 }
 input::placeholder{
     color: #bababa;
+}
+@media screen and (max-width: 480px) {
+    input{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 768px) {
+    input{
+        width: 92%;
+    }
 }

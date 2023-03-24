@@ -63,3 +63,9 @@
 .icons{
     margin-bottom: -1.5px;
 }
+.CardList .info{    
+    text-align: left;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #bababa;
+}

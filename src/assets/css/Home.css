@@ -2,8 +2,6 @@ body{
     text-align: center;
 }
 .formExam{
-    width: 332px;
-    margin: auto;
     color: black;
     background-color: white;
     border-radius: 12px;
@@ -19,11 +17,15 @@ body{
     font-weight: 700;
     font-size: 1.2rem;
 }
+.info{
+    text-align: left;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #bababa;
+}
 .listaInserimenti{
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    width: 332px;
+    margin-top: 0.65rem;
+    margin-bottom: 0.65rem;
     padding-left: 15px;
     padding-right: 15px;
     background-color: white;
@@ -41,10 +43,7 @@ body{
     margin-bottom: -1.5px;
 }
 .statsExam{
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    width: 332px;
+    margin-bottom: 0.65rem;
     padding-left: 15px;
     padding-right: 15px;
     background-color: white;
@@ -57,4 +56,87 @@ body{
     text-align: left;
     font-weight: 700;
     font-size: 1.2rem;
+}
+/*NAVBAR*/
+nav{
+    width: 364px;
+    background-color: white;
+    margin: auto;
+    color: black;
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 40px;
+    box-shadow: 2px 2px 2px lightgrey;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 2px;
+    padding-right: 2px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.linkNavbar{
+    width: 42%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 13px;
+    padding-right: 13px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: 250ms;
+}
+.thisPage{
+    background-color: #0083fa;
+    font-weight: 500;
+    cursor: default;
+    color: rgb(233, 247, 254);
+}
+.linkPage{
+    color: #bababa;
+    font-weight: 500;
+    text-decoration: none;
+}
+.linkPage:hover{
+    color: #616161;
+}
+section{
+    padding-top: 77px;
+    /*width: 366px;*/
+    margin: auto;
+}
+@media screen and (max-width: 480px) {
+    section{
+        width: 98%;
+    }
+    nav{
+        width: 98%;
+    }
+}
+@media screen and (max-width: 850px) {
+    section{
+        width: 430px;
+    }
+    nav{
+        width: 430px;
+    }
+}
+@media screen and (min-width: 850px) {
+    section{
+        padding-top: 87px;
+        width: 100%;
+        display: inline-block;
+    }
+    .formExam, .listaInserimenti, .statsExam{
+        width: 366px;
+        display: inline-block;
+        margin-top: 0;
+        margin-inline-end: 1rem;
+        vertical-align: top;
+    }
+    nav{
+        width: 430px;
+    }
 }

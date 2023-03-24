@@ -7,6 +7,7 @@ import { IoMdSchool } from "react-icons/io";
 function CardList(props) {
     return (
         <div className="CardList">
+            <p className="info">Tutti i tuoi esami: </p>
             {
                 props.inputObject.map(
                     (singleExam, i) => {
