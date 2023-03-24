@@ -24,3 +24,8 @@ input::placeholder{
         width: 92%;
     }
 }
+@media screen and (min-width: 850px) {
+    input{
+        width: 335px;
+    }
+}
