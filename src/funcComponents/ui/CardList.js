@@ -54,8 +54,7 @@ function CardList(props) {
         </div>
     )
 }
-CardList.defaultProps = {
-}
 CardList.propTypes = {
+    inputObject: PropTypes.object.isRequired
 }
 export default CardList;

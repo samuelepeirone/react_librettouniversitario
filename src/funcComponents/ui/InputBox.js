@@ -17,10 +17,16 @@ function InputBox(props){
         />
     )
 }
+InputBox.defaultProps = {
+    inputPlaceholder:'Input',
+    inputType: 'text'
+}
 InputBox.propTypes = {
     callbackInput: PropTypes.func.isRequired,
     inputType: PropTypes.string,
     inputPlaceholder: PropTypes.string,
-    inputMaxLength: PropTypes.number
+    inputMin: PropTypes.number,
+    inputMax: PropTypes.number,
+    value: PropTypes.string
 }
 export default InputBox;

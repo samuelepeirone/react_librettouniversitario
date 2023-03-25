@@ -19,7 +19,8 @@ function ListExam() {
     useEffect(
         () => {
             console.log('componente pronto -> didMount')
-        }, [state]
+            computeStats()
+        }, [state.exam]
     )
     function computeStats() {
         let tempExam = state.exam
@@ -71,14 +72,6 @@ function ListExam() {
                 </div>
                 <div className="statsExam">
                     <h1>Stats</h1>
-                    <p>
-                        <Button
-                            label={'Visualizza'}
-                            icon={<AiOutlineBarChart className="icons" />}
-                            callbackButton={computeStats}
-                            className={'blueButton'}
-                        />
-                    </p>
                     <p>
                         <CardStats
                             inputObject={state.stats}

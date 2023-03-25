@@ -34,8 +34,7 @@ function CardStats(props) {
         </div>
     )
 }
-CardStats.defaultProps = {
-}
 CardStats.propTypes = {
+    inputObject: PropTypes.object.isRequired
 }
 export default CardStats;

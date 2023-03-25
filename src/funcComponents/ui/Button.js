@@ -14,12 +14,13 @@ function Button(props){
     )
 }
 Button.defaultProps = {
-    label:'title'
+    label:'Button'
 }
 Button.propTypes = {
     label: PropTypes.string,
-    classCss: PropTypes.string,
-    fontSize: PropTypes.number,
+    icon: PropTypes.element,
+    className: PropTypes.string,
+    id: PropTypes.string,
     callbackButton: PropTypes.func.isRequired
 }
 export default Button;
