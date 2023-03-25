@@ -1,0 +1,64 @@
+nav{
+    width: 364px;
+    background-color: white;
+    margin: auto;
+    color: black;
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 40px;
+    box-shadow: 2px 2px 2px lightgrey;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 2px;
+    padding-right: 2px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+nav span{
+    width: 42%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 13px;
+    padding-right: 13px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: 250ms;
+}
+.thisPage{
+    background-color: #0083fa;
+    font-weight: 500;
+    cursor: default;
+    color: rgb(233, 247, 254);
+}
+.linkPage, .linkPage a{
+    color: #bababa;
+    font-weight: 500;
+    text-decoration: none;
+    background-color: white;
+}
+.linkPage:hover, .linkPage a:hover{
+    color: #616161;
+}
+.icons{
+    margin-bottom: -1.5px;
+}
+@media screen and (max-width: 480px) {
+    nav{
+        width: 98%;
+        max-width: 380px;
+    }
+}
+@media screen and (max-width: 850px) {
+    nav{
+        width: 430px;
+    }
+}
+@media screen and (min-width: 850px) {
+    nav{
+        width: 430px;
+    }
+}

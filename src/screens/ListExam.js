@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import '../assets/css/Home.css';
 import Button from '../funcComponents/ui/Button';
+import NavBar from '../funcComponents/ui/NavBar';
 import { Link } from 'react-router-dom'
 import CardList from "../funcComponents/ui/CardList";
 import CardStats from "../funcComponents/ui/CardStats";
@@ -9,7 +10,6 @@ import { AiOutlineBarChart } from 'react-icons/ai';
 import { MdVerticalSplit, MdCreate } from 'react-icons/md';
 
 function ListExam() {
-    let tempCount = 0
     const [state, setState] = useState(
         {
             exam: localStorage.getItem("librettoEsami") === null ? [] : JSON.parse(localStorage.getItem("librettoEsami")),
@@ -18,7 +18,7 @@ function ListExam() {
     )
     useEffect(
         () => {
-            console.log('componente pronto -> didMount')
+            console.log('useEffect computeStats()')
             computeStats()
         }, [state.exam]
     )
@@ -57,10 +57,14 @@ function ListExam() {
     }
     return (
         <div id="ready" className="ListExam">
-            <nav>
-                <Link to={'/'} className='linkNavbar linkPage'>Libretto <MdCreate className="icons" /></Link>
-                <span className="linkNavbar thisPage">Lista esami <MdVerticalSplit className="icons"/></span>
-            </nav>
+            <NavBar
+                Page1={<Link to={'/'}>Libretto </Link>}
+                ClassPage1={'linkPage'}
+                IconPage1={<MdCreate className='icons' />}
+                Page2={'Lista esami'}
+                ClassPage2={'thisPage'}
+                IconPage2={<MdVerticalSplit className='icons' />}
+            />
             <section>
                 <div className='listaInserimenti'>
                     <h1>Lista esami</h1>

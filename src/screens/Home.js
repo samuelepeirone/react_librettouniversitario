@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import '../assets/css/Home.css';
 import Button from '../funcComponents/ui/Button';
 import InputBox from '../funcComponents/ui/InputBox';
+import NavBar from '../funcComponents/ui/NavBar';
 import { Link } from 'react-router-dom'
 import CardList from '../funcComponents/ui/CardList'
 import { AiOutlineFileAdd, AiOutlineDelete } from 'react-icons/ai';
@@ -18,7 +19,7 @@ function Home() {
   )
   useEffect(
     () => {
-      console.log('componente pronto -> didMount')
+      console.log('run the function controlForm()')
       controlForm()
     }, [state.messageName, state.messageGrade, state.messageDate]
   )
@@ -88,16 +89,18 @@ function Home() {
     localStorage.setItem("librettoEsami", JSON.stringify(tempExam));
   }
   function deleteAllExams() {
+    let tempExamObj=state.exam
     let confirmValue=window.confirm('Sei sicuro di voler eliminare tutti gli esami?')
     if (confirmValue==true){
-      setState(
-        {
-          ...state,
-          exam: []
-        }
-      )
+      tempExamObj=[]
       localStorage.removeItem("librettoEsami")
     }
+    setState(
+      {
+        ...state,
+        exam: tempExamObj
+      }
+    )
   }
   function controlForm() {
     if (state.messageName && state.messageGrade && state.messageDate && state.messageGrade < 32 && state.messageGrade >= 0) {
@@ -110,10 +113,14 @@ function Home() {
 
   return (
     <div className="Home" id='ready'>
-      <nav>
-        <span className='linkNavbar thisPage'>Libretto <MdCreate className='icons' /></span>
-        <Link to={'ListaEsami'} className='linkNavbar linkPage'>Lista esami <MdVerticalSplit className='icons'/></Link>
-      </nav>
+      <NavBar 
+        Page1={'Libretto'}
+        ClassPage1={'thisPage'}
+        IconPage1={<MdCreate className='icons'/>}
+        Page2={<Link to={'ListaEsami'}>Lista esami</Link>}
+        ClassPage2={'linkPage'}
+        IconPage2={<MdVerticalSplit className='icons'/>}
+      />
       <section>
         <div className='formExam'>
           <h1>Inserimento</h1>
