@@ -28,7 +28,7 @@ function ListExam() {
         let num = 0
         let tempExamsNotPassed = 0
         let tempExamsPassedWithMerit = 0
-        state.exam.map(
+        tempExam.map(
             (singleExam, i) => {
                 let tempNum = parseInt(singleExam.grade)
                 num += tempNum

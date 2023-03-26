@@ -65,14 +65,15 @@ function Home() {
     }
   }
   function saveExam() {
-    let tempFinalResult = computeFinalResult(state.messageGrade)
+    let tempMessageGrade=state.messageGrade
+    let tempFinalResult = computeFinalResult(tempMessageGrade)
     console.log('SALVA!')
     let tempExam = state.exam
     tempExam.push(
       {
         name: state.messageName,
         grade: state.messageGrade,
-        gradeResult: computeGradeResult(state.messageGrade),
+        gradeResult: computeGradeResult(tempMessageGrade),
         date: state.messageDate,
         finalResult: tempFinalResult
       }
@@ -103,7 +104,10 @@ function Home() {
     )
   }
   function controlForm() {
-    if (state.messageName && state.messageGrade && state.messageDate && state.messageGrade < 32 && state.messageGrade >= 0) {
+    let tempMessageName=state.messageName
+    let tempMessageGrade=state.messageGrade
+    let tempMessageDate=state.messageDate
+    if (tempMessageName && tempMessageGrade && tempMessageDate && tempMessageGrade < 32 && tempMessageGrade >= 0) {
       document.getElementById('addExamButton').disabled = false
     }
     else {
