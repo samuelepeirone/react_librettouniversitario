@@ -1,7 +1,7 @@
 {
   "name": "progetto_esame",
   "version": "0.1.0",
-  "homepage": "https://samuelepeirone.github.io/react_progetto_esame",
+  "homepage": "https://samuelepeirone.github.io/react-libretto",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
