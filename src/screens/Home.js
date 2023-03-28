@@ -42,7 +42,7 @@ function Home() {
     })
   }
   function computeFinalResult(grade) {
-    var x = grade
+    let x = grade
     switch (true) {
       case (x == 31):
         return '30 e lode'
