@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react_librettouniversitario/static/css/main.37f19764.css",
+    "main.js": "/react_librettouniversitario/static/js/main.f2306a7e.js",
+    "static/js/787.10fbe858.chunk.js": "/react_librettouniversitario/static/js/787.10fbe858.chunk.js",
+    "index.html": "/react_librettouniversitario/index.html",
+    "main.37f19764.css.map": "/react_librettouniversitario/static/css/main.37f19764.css.map",
+    "main.f2306a7e.js.map": "/react_librettouniversitario/static/js/main.f2306a7e.js.map",
+    "787.10fbe858.chunk.js.map": "/react_librettouniversitario/static/js/787.10fbe858.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.37f19764.css",
+    "static/js/main.f2306a7e.js"
+  ]
+}
